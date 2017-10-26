@@ -42,6 +42,7 @@ class Repos extends Component {
   render() {
     return (
       <div className='repo-selector'>
+        <span style={{ width: '150px', marginTop: '5px' }}> Select Repo: </span> 
         <FormControl
           componentClass="select"
           placeholder="Select Repository..."
