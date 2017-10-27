@@ -30,8 +30,8 @@ class Comment extends Component {
 
   editComment() {
     const { dispatch, data, issueNumber } = this.props;
-    dispatch(updateComment(issueNumber, data.id, this.state.comment));
     this.changeEditableState(false);
+    dispatch(updateComment(issueNumber, data.id, this.state.comment));
   }
 
   setAlert() {
@@ -44,6 +44,7 @@ class Comment extends Component {
 
   deleteComment() {
     const { dispatch, data, issueNumber } = this.props;
+    this.removeAlert();
     dispatch(removeComment(issueNumber, data.id));
   }
 

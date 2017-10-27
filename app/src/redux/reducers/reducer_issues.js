@@ -4,7 +4,7 @@ import {
 } from '../actions/action_issues';
 
 function setIssues(state = {
-  issuesFetching: true, openIssues: [], closedIssues: [],
+  issuesFetching: false, openIssues: [], closedIssues: [],
 }, action) {
   switch (action.type) {
     case SET_OPEN_ISSUES: {

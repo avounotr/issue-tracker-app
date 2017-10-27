@@ -2,7 +2,7 @@ import objectAssign from 'object-assign';
 import { CLEAN_COMMENTS, SET_COMMENTS } from '../actions/action_comments';
 
 function setComments(state = {
-  commentsFetching: true, comments: []
+  commentsFetching: false, comments: []
 }, action) {
   switch (action.type) {
     case SET_COMMENTS: {

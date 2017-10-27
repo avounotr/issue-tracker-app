@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 
 import Helper from '../../../utils/helper';
 import { setIssues } from '../../../redux/actions/action_issues';
-// import Menu from '../../menu/Menu';
+
 import Issue from './Issue';
 import Logout from '../../auth/Logout';
 import Repos from '../../menu/Repos';
-
+import Loader from '../../loader/Loader';
 
 class ViewIssues extends Component {
   constructor(props) {
@@ -65,7 +65,8 @@ class ViewIssues extends Component {
     const closedIssues = this.setIssues(issues.closedIssues);
 
     return (
-      <div>
+      <div id="wrapper">
+        <Loader />
         <Logout />
         <div id='view-issues'>
           <Repos />

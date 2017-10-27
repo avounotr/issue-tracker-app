@@ -33,7 +33,7 @@ class Login extends Component {
 
   render() {
     return this.loading ?
-      ( <div> Loading... </div> ) :
+      ( <div className="loader"> Loading.... </div> ) :
       ( <div id="login">
           <a href={this.loginUrl}>
             <Button bsStyle="success" bsSize="large"> Login! </Button>

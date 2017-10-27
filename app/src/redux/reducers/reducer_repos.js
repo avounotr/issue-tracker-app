@@ -2,7 +2,7 @@ import objectAssign from 'object-assign';
 import { CLEAR_REPO, SET_REPO } from '../actions/action_repos';
 
 function setRepo(state = {
-  repoFetching: true, repo: '',
+  repoFetching: false, repo: '',
 }, action) {
   switch (action.type) {
     case SET_REPO: {

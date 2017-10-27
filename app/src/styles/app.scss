@@ -1,6 +1,8 @@
 body {
   font-family: "Times New Roman", Georgia, Serif;
   font-size: 15px;
+  height: 100%;
+  overflow: hidden;
 }
 
 a {
@@ -12,6 +14,19 @@ ul {
   list-style-type: none;
   margin: 0px;
   padding: 0px;
+}
+
+.loader {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+  color: white;
+  font-size: 2em;
 }
 
 #login {
@@ -114,18 +129,15 @@ ul {
   }
 }
 
-// @media screen and (min-width: 480px) {
-//   body {
-//     background-color: lightgreen;
-//   }
-// }
-
+#wrapper {
+  height: 100vh;
+}
 
 #edit-issue {
   display: flex;
   justify-content: center;
-  max-width: 1300px;
   height: 100%;
+  overflow: auto;
   margin-bottom: 50px;
 
   .display-comments {
@@ -133,6 +145,7 @@ ul {
     display: flex;
     flex-direction: column;
     width: 70%;
+    max-width: 910px;
 
     .issue-title {
       background: #d8d8d8;
@@ -152,6 +165,7 @@ ul {
 
   .metadata {
     width: 30%;
+    max-width: 390px;
     padding: 40px;
     margin-top: 20px;
   }

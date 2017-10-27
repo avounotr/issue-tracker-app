@@ -9,6 +9,7 @@ import { setComments, submitComment } from '../../../redux/actions/action_commen
 
 import Comment from './Comment';
 import Helper from '../../../utils/helper';
+import Loader from '../../loader/Loader';
 
 class EditIssue extends Component {
   constructor(props) {
@@ -40,57 +41,60 @@ class EditIssue extends Component {
     const { labels, assignees } = issue;
 
     return Helper.variableExists(issue.id) ? (
-      <div id='edit-issue'>
-        <div className="display-comments">
-          <h1 className="issue-title">
-            { issue.title }
-          </h1>
-          <ul>
-            { comments.map((comment, index) => (
-              <Comment key={index} data={comment} issueNumber={issue.number} />
-            ))}
-          </ul>
-          <div style={{ marginTop: '30px' }}>
-            <MDEditor value={this.state.newComment} onChange={this.change} />
-            <div style={{ textAlign: 'right' }}>
-              <Link to='/'>
-                <Button bsStyle="warning" bsSize="small" onClick={this.submitComment}>
-                  Cancel
+      <div id="wrapper">
+        <div id='edit-issue'>
+          <Loader />
+          <div className="display-comments">
+            <h1 className="issue-title">
+              { issue.title }
+            </h1>
+            <ul>
+              { comments.map((comment, index) => (
+                <Comment key={index} data={comment} issueNumber={issue.number} />
+              ))}
+            </ul>
+            <div style={{ margin: '30px 0 50px 0' }}>
+              <MDEditor value={this.state.newComment} onChange={this.change} />
+              <div style={{ textAlign: 'right' }}>
+                <Link to='/'>
+                  <Button bsStyle="warning" bsSize="small" onClick={this.submitComment}>
+                    Cancel
+                  </Button>
+                </Link>
+                <Button bsStyle="primary" bsSize="small" onClick={this.submitComment}>
+                  Submit Comment
                 </Button>
-              </Link>
-              <Button bsStyle="primary" bsSize="small" onClick={this.submitComment}>
-                Submit Comment
-              </Button>
+              </div>
             </div>
           </div>
-        </div>
-        <div className='metadata'>
-          <ListGroup>
-            <ListGroupItem header="Assignees">
-              { assignees.map((assignee, index) => (
-                <span key={index} style={{ display: 'inline-block' }}>
-                  <img src={assignee.avatar_url} className="extra-small-thumb" />
-                  { assignee.login }
-                </span>
-              ))}
-            </ListGroupItem>
-            <ListGroupItem header="Labels">
-              { labels.map((label, index) => (
-                <span
-                  key={index}
-                  style={{
-                    width: '100%',
-                    background: `#${label.color}`,
-                    color: 'white',
-                    display: 'inline-block',
-                    padding: '3px',
-                  }}
-                >
-                  { label.name }
-                </span>
-              ))}
-            </ListGroupItem>
-          </ListGroup>
+          <div className='metadata'>
+            <ListGroup>
+              <ListGroupItem header="Assignees">
+                { assignees.map((assignee, index) => (
+                  <span key={index} style={{ display: 'inline-block' }}>
+                    <img src={assignee.avatar_url} className="extra-small-thumb" />
+                    { assignee.login }
+                  </span>
+                ))}
+              </ListGroupItem>
+              <ListGroupItem header="Labels">
+                { labels.map((label, index) => (
+                  <span
+                    key={index}
+                    style={{
+                      width: '100%',
+                      background: `#${label.color}`,
+                      color: 'white',
+                      display: 'inline-block',
+                      padding: '3px',
+                    }}
+                  >
+                    { label.name }
+                  </span>
+                ))}
+              </ListGroupItem>
+            </ListGroup>
+          </div>
         </div>
       </div>
     ) : null;
