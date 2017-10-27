@@ -23,10 +23,10 @@ class Login extends Component {
       this.apiCall.get(`${Config.issueTrackerApi}/access_token`, { code }, false)
         .then((res) => {
           window.localStorage.setItem('accessToken', res.accessToken);
-          Helper.goto();
+          window.location.href = '/';
         })
         .catch((error) => {
-          Helper.goto();
+          window.location.href = '/';
         });
     }
   }

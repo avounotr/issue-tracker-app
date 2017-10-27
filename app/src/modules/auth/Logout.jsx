@@ -6,7 +6,7 @@ import Helper from '../../utils/helper';
 const Logout = () => {
   const logout = () => {
     window.localStorage.removeItem('accessToken');
-    Helper.goto();
+    window.location.href = '/';
   }
 
   return (

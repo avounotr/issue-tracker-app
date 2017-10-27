@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import MDEditor from 'react-markdown-editor-hybrid';
 import { Button, ListGroup, ListGroupItem } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import { setComments, submitComment } from '../../../redux/actions/action_comments';
 
@@ -23,6 +23,9 @@ class EditIssue extends Component {
     const { dispatch, issue } = this.props;
     if (Helper.variableExists(issue.id)) {
       dispatch(setComments(issue.number));
+    } else {
+      // Redirect if there is no issue
+      this.props.history.push('/')
     }
   }
 
@@ -119,11 +122,6 @@ function mapStateToProps(state) {
   const issue = issueState === 'open' ?
     openIssues[index] : closedIssues[index];
 
-  // Redirect if there is no issue
-  if (!Helper.variableExists(issue)) {
-    Helper.goto();
-  }
-
   const comments = Helper.variableExists(state.commentsState.comments) ?
     state.commentsState.comments.map((comment) => {
       return {
@@ -140,4 +138,4 @@ function mapStateToProps(state) {
   return { issue: issue || {}, comments };
 }
 
-export default connect(mapStateToProps)(EditIssue);
+export default connect(mapStateToProps)(withRouter(EditIssue));

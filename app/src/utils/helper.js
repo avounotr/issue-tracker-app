@@ -9,10 +9,6 @@ class Helper {
     ).join('&');
   }
 
-  static goto(location= '/') {
-    window.location.href = location;
-  }
-
   static isLoggedIn() {
     return Helper.variableExists(window.localStorage['accessToken']);
   }
