@@ -57,7 +57,7 @@ class EditIssue extends Component {
               <MDEditor value={this.state.newComment} onChange={this.change} />
               <div style={{ textAlign: 'right' }}>
                 <Link to='/'>
-                  <Button bsStyle="warning" bsSize="small" onClick={this.submitComment}>
+                  <Button bsStyle="warning" bsSize="small">
                     Cancel
                   </Button>
                 </Link>
